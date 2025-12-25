@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { globalErrorHandler } from './middlewares/error.middleware';
 
 const app: Application = express();
 
@@ -18,5 +19,8 @@ app.get('/health', (req: Request, res: Response) => {
     timestamp: new Date().toISOString() 
   });
 });
+
+// Global Error Handler
+app.use(globalErrorHandler);
 
 export default app;
