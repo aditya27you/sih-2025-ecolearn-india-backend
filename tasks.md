@@ -5,7 +5,7 @@
 > **Test Criteria**: Server starts successfully, connects to DB, health check endpoint returns 200, global error handler works.
 
 - [x] T001 Initialize `src/app.ts` with Express, CORS, Helmet, and middleware mounting
-- [ ] T002 Configure `src/server.ts` to connect to MongoDB and start the server
+- [x] T002 Configure `src/server.ts` to connect to MongoDB and start the server
 - [ ] T003 Create `src/middlewares/error.middleware.ts` for global error handling (wrapping `ApiError`)
 - [ ] T004 Create `src/middlewares/auth.middleware.ts` for JWT verification
 - [ ] T005 Create `src/middlewares/validate.middleware.ts` for Zod validation integration
