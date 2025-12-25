@@ -35,19 +35,19 @@
 - [x] T019 [US2] Create Lesson repository in `src/repositories/lesson.repository.ts`
 - [x] T020 [US2] Create Module service in `src/services/module.service.ts`
 - [x] T021 [US2] Create Lesson service in `src/services/lesson.service.ts`
-- [ ] T022 [US2] Create Module controller in `src/controllers/module.controller.ts`
-- [ ] T023 [US2] Create Lesson controller in `src/controllers/lesson.controller.ts`
-- [ ] T024 [US2] Create Module routes in `src/routes/module.routes.ts` (include nested lesson routes)
-- [ ] T025 [US2] Register Module routes in `src/app.ts`
+- [x] T022 [US2] Create Module controller in `src/controllers/module.controller.ts`
+- [x] T023 [US2] Create Lesson controller in `src/controllers/lesson.controller.ts`
+- [x] T024 [US2] Create Module routes in `src/routes/module.routes.ts` (include nested lesson routes)
+- [x] T025 [US2] Register Module routes in `src/app.ts`
 
 ## Phase 4: User Story 3 - Quizzes & Assessments
 > **Goal**: Users can take quizzes linked to modules.
 > **Test Criteria**: Can retrieve quiz for a module, submit answers, get graded result.
 
-- [ ] T026 [US3] Create Quiz model in `src/models/quiz.model.ts`
-- [ ] T027 [US3] Create Quiz repository in `src/repositories/quiz.repository.ts`
-- [ ] T028 [US3] Create Quiz service in `src/services/quiz.service.ts` (grading logic)
-- [ ] T029 [US3] Create Quiz controller in `src/controllers/quiz.controller.ts`
+- [x] T026 [US3] Create Quiz model in `src/models/quiz.model.ts`
+- [x] T027 [US3] Create Quiz repository in `src/repositories/quiz.repository.ts`
+- [x] T028 [US3] Create Quiz service in `src/services/quiz.service.ts` (grading logic)
+- [x] T029 [US3] Create Quiz controller in `src/controllers/quiz.controller.ts`
 - [ ] T030 [US3] Create Quiz routes in `src/routes/quiz.routes.ts`
 - [ ] T031 [US3] Register Quiz routes in `src/app.ts`
 
