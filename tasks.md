@@ -17,7 +17,7 @@
 
 - [x] T007 [US1] Create User model in `src/models/user.model.ts`
 - [x] T008 [US1] Create User repository in `src/repositories/user.repository.ts`
-- [ ] T009 [US1] Create Auth service in `src/services/auth.service.ts` (login, register)
+- [x] T009 [US1] Create Auth service in `src/services/auth.service.ts` (login, register)
 - [ ] T010 [US1] Create User service in `src/services/user.service.ts` (profile management)
 - [ ] T011 [US1] Create Auth controller in `src/controllers/auth.controller.ts`
 - [ ] T012 [US1] Create User controller in `src/controllers/user.controller.ts`
