@@ -29,8 +29,8 @@
 > **Goal**: Users can view learning modules and lessons. Admins can manage them.
 > **Test Criteria**: Can CRUD modules and lessons, nested lessons appear in module details.
 
-- [ ] T016 [US2] Create Module model in `src/models/module.model.ts`
-- [ ] T017 [US2] Create Lesson model in `src/models/lesson.model.ts`
+- [x] T016 [US2] Create Module model in `src/models/module.model.ts`
+- [x] T017 [US2] Create Lesson model in `src/models/lesson.model.ts`
 - [ ] T018 [US2] Create Module repository in `src/repositories/module.repository.ts`
 - [ ] T019 [US2] Create Lesson repository in `src/repositories/lesson.repository.ts`
 - [ ] T020 [US2] Create Module service in `src/services/module.service.ts`
