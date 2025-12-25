@@ -9,7 +9,7 @@
 - [x] T003 Create `src/middlewares/error.middleware.ts` for global error handling (wrapping `ApiError`)
 - [x] T004 Create `src/middlewares/auth.middleware.ts` for JWT verification
 - [x] T005 Create `src/middlewares/validate.middleware.ts` for Zod validation integration
-- [ ] T006 Create `src/routes/index.ts` (or `server.ts` in routes) as main router entry point
+- [x] T006 Create `src/routes/index.ts` (or `server.ts` in routes) as main router entry point
 
 ## Phase 2: User Story 1 - Authentication & User Management
 > **Goal**: Users (Students, Teachers) can register, login, and manage their profiles.

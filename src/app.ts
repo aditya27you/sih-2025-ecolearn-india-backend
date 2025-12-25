@@ -1,7 +1,8 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import { globalErrorHandler } from './middlewares/error.middleware';
+import routes from './routes';
 
 const app: Application = express();
 
@@ -11,14 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health Check Endpoint
-app.get('/health', (req: Request, res: Response) => {
-  res.status(200).json({ 
-    success: true, 
-    message: 'EcoLearn India API is running', 
-    timestamp: new Date().toISOString() 
-  });
-});
+// Routes
+app.use('/api/v1', routes);
 
 // Global Error Handler
 app.use(globalErrorHandler);
