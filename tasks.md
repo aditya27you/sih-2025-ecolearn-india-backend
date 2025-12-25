@@ -22,7 +22,7 @@
 - [x] T011 [US1] Create Auth controller in `src/controllers/auth.controller.ts`
 - [x] T012 [US1] Create User controller in `src/controllers/user.controller.ts`
 - [x] T013 [US1] Create Auth routes in `src/routes/auth.routes.ts`
-- [ ] T014 [US1] Create User routes in `src/routes/user.routes.ts`
+- [x] T014 [US1] Create User routes in `src/routes/user.routes.ts`
 - [ ] T015 [US1] Register Auth and User routes in `src/app.ts` (or main router)
 
 ## Phase 3: User Story 2 - Educational Content (Modules & Lessons)
