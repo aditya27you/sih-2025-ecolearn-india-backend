@@ -48,38 +48,38 @@
 - [x] T027 [US3] Create Quiz repository in `src/repositories/quiz.repository.ts`
 - [x] T028 [US3] Create Quiz service in `src/services/quiz.service.ts` (grading logic)
 - [x] T029 [US3] Create Quiz controller in `src/controllers/quiz.controller.ts`
-- [ ] T030 [US3] Create Quiz routes in `src/routes/quiz.routes.ts`
-- [ ] T031 [US3] Register Quiz routes in `src/app.ts`
+- [x] T030 [US3] Create Quiz routes in `src/routes/quiz.routes.ts`
+- [x] T031 [US3] Register Quiz routes in `src/app.ts`
 
 ## Phase 5: User Story 4 - Challenges & Submissions
 > **Goal**: Users can view challenges and upload proof (images).
 > **Test Criteria**: Can list challenges, submit image (multipart/form-data), admin can approve.
 
-- [ ] T032 [US4] Create Challenge model in `src/models/challenge.model.ts`
-- [ ] T033 [US4] Create Submission model in `src/models/submission.model.ts`
-- [ ] T034 [US4] Create Challenge repository in `src/repositories/challenge.repository.ts`
-- [ ] T035 [US4] Create Submission repository in `src/repositories/submission.repository.ts`
-- [ ] T036 [US4] Create Challenge service in `src/services/challenge.service.ts`
-- [ ] T037 [US4] Create Challenge controller in `src/controllers/challenge.controller.ts` (handle file upload)
-- [ ] T038 [US4] Create Challenge routes in `src/routes/challenge.routes.ts`
-- [ ] T039 [US4] Register Challenge routes in `src/app.ts`
+- [x] T032 [US4] Create Challenge model in `src/models/challenge.model.ts`
+- [x] T033 [US4] Create Submission model in `src/models/submission.model.ts`
+- [x] T034 [US4] Create Challenge repository in `src/repositories/challenge.repository.ts`
+- [x] T035 [US4] Create Submission repository in `src/repositories/submission.repository.ts`
+- [x] T036 [US4] Create Challenge service in `src/services/challenge.service.ts`
+- [x] T037 [US4] Create Challenge controller in `src/controllers/challenge.controller.ts` (handle file upload)
+- [x] T038 [US4] Create Challenge routes in `src/routes/challenge.routes.ts`
+- [x] T039 [US4] Register Challenge routes in `src/app.ts`
 
 ## Phase 6: User Story 5 - Gamification & Leaderboards
 > **Goal**: Users can see their ranking and stats.
 > **Test Criteria**: Leaderboard returns correct ranking based on eco-points.
 
-- [ ] T040 [US5] Create Leaderboard service in `src/services/leaderboard.service.ts` (aggregation logic)
-- [ ] T041 [US5] Create Leaderboard controller in `src/controllers/leaderboard.controller.ts`
-- [ ] T042 [US5] Create Leaderboard routes in `src/routes/leaderboard.routes.ts`
-- [ ] T043 [US5] Register Leaderboard routes in `src/app.ts`
+- [x] T040 [US5] Create Leaderboard service in `src/services/leaderboard.service.ts` (aggregation logic)
+- [x] T041 [US5] Create Leaderboard controller in `src/controllers/leaderboard.controller.ts`
+- [x] T042 [US5] Create Leaderboard routes in `src/routes/leaderboard.routes.ts`
+- [x] T043 [US5] Register Leaderboard routes in `src/app.ts`
 
 ## Phase 7: Polish & Documentation
 > **Goal**: Ensure code quality and documentation.
 > **Test Criteria**: Swagger UI is accessible and shows all endpoints.
 
-- [ ] T044 Add Swagger annotations to `src/routes/*.ts` files
-- [ ] T045 Finalize `src/config/swagger.ts` configuration
-- [ ] T046 Verify `src/app.ts` mounts Swagger UI at `/api-docs`
+- [x] T044 Add Swagger annotations to `src/routes/*.ts` files
+- [x] T045 Finalize `src/config/swagger.ts` configuration
+- [x] T046 Verify `src/app.ts` mounts Swagger UI at `/api-docs`
 
 ## Dependencies
 - US1 (Auth) blocks all other stories (User ID required for most operations).
