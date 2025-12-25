@@ -13,7 +13,8 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
-    "tsx": "^4.21.0"
+    "tsx": "^4.21.0",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

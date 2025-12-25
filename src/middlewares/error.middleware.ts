@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ApiError } from '../utils/apierror';
+import { ZodError } from 'zod';
 
 export const globalErrorHandler = (
   err: any,
@@ -12,6 +13,16 @@ export const globalErrorHandler = (
   // Default values
   error.statusCode = error.statusCode || 500;
   error.message = error.message || 'Internal Server Error';
+
+  // Zod Validation Error
+  if (err instanceof ZodError) {
+    const messages = err.errors.map((issue) => `${issue.path.join('.')}: ${issue.message}`);
+    return res.status(400).json({
+      success: false,
+      message: 'Validation Error',
+      errors: messages,
+    });
+  }
 
   // Mongoose Validation Error
   if (err.name === 'ValidationError') {
