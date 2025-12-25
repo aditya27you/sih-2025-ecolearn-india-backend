@@ -31,8 +31,8 @@
 
 - [x] T016 [US2] Create Module model in `src/models/module.model.ts`
 - [x] T017 [US2] Create Lesson model in `src/models/lesson.model.ts`
-- [ ] T018 [US2] Create Module repository in `src/repositories/module.repository.ts`
-- [ ] T019 [US2] Create Lesson repository in `src/repositories/lesson.repository.ts`
+- [x] T018 [US2] Create Module repository in `src/repositories/module.repository.ts`
+- [x] T019 [US2] Create Lesson repository in `src/repositories/lesson.repository.ts`
 - [ ] T020 [US2] Create Module service in `src/services/module.service.ts`
 - [ ] T021 [US2] Create Lesson service in `src/services/lesson.service.ts`
 - [ ] T022 [US2] Create Module controller in `src/controllers/module.controller.ts`
