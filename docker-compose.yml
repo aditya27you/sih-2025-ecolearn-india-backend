@@ -8,6 +8,11 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - ecolearn-network
 
@@ -16,13 +21,15 @@ services:
     container_name: ecolearn-backend
     ports:
       - "2704:2704"
+    env_file:
+      - .env
     environment:
-      - PORT=2704
       - MONGO_URI=mongodb://mongodb:27017/ecolearn-india
-      - JWT_SECRET=your-very-secure-secret
-      - JWT_EXPIRES_IN=7d
+    volumes:
+      - ./src/uploads:/app/src/uploads
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     networks:
       - ecolearn-network
 
