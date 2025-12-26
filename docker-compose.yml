@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: ecolearn-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - ecolearn-network
+
+  backend:
+    build: .
+    container_name: ecolearn-backend
+    ports:
+      - "2704:2704"
+    environment:
+      - PORT=2704
+      - MONGO_URI=mongodb://mongodb:27017/ecolearn-india
+      - JWT_SECRET=your-very-secure-secret
+      - JWT_EXPIRES_IN=7d
+    depends_on:
+      - mongodb
+    networks:
+      - ecolearn-network
+
+networks:
+  ecolearn-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:

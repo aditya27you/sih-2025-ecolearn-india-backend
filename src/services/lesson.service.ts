@@ -2,6 +2,7 @@ import { lessonRepository } from '../repositories/lesson.repository';
 import { moduleRepository } from '../repositories/module.repository';
 import { ILesson } from '../types/module.types';
 import { ApiError } from '../utils/apierror';
+import { Module } from '../models/module.model';
 
 export class LessonService {
   async createLesson(data: Partial<ILesson>) {
@@ -12,8 +13,8 @@ export class LessonService {
     const lesson = await lessonRepository.create(data);
     
     // Add lesson to module's lessons array
-    await moduleRepository.update(data.moduleId.toString(), {
-      $push: { lessons: lesson._id } as any
+    await Module.findByIdAndUpdate(data.moduleId, {
+      $push: { lessons: lesson._id }
     });
 
     return lesson;
@@ -49,8 +50,8 @@ export class LessonService {
     
     // Remove lesson from module's lessons array
     if (lesson.moduleId) {
-      await moduleRepository.update(lesson.moduleId.toString(), {
-        $pull: { lessons: id } as any
+      await Module.findByIdAndUpdate(lesson.moduleId, {
+        $pull: { lessons: id }
       });
     }
 

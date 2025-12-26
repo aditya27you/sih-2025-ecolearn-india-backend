@@ -55,17 +55,17 @@ const UserSchema = new Schema<IUser>(
   }
 );
 
-UserSchema.index({ email: 1 });
 UserSchema.index({ schoolId: 1, ecoPoints: -1 });
 
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
+UserSchema.pre('save', async function () {
+  const user = this as any;
+  if (!user.isModified('password')) return;
+  
+  user.password = await bcrypt.hash(user.password, 12);
 });
 
 UserSchema.methods.comparePassword = async function (candidatePassword: string) {
-  return bcrypt.compare(candidatePassword, this.password);
+  return bcrypt.compare(candidatePassword, (this as any).password);
 };
 
 export const User = mongoose.model<IUser>('User', UserSchema);

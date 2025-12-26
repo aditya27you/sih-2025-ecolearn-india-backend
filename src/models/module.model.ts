@@ -43,6 +43,4 @@ const ModuleSchema = new Schema<IModule>(
   }
 );
 
-ModuleSchema.index({ title: 1 });
-
 export const Module = mongoose.model<IModule>('Module', ModuleSchema);

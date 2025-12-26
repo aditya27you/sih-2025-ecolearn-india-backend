@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ApiError } from '../utils/apierror';
-import { ZodError } from 'zod';
+import { ZodError, ZodIssue } from 'zod';
 
 export const globalErrorHandler = (
   err: any,
@@ -16,7 +16,7 @@ export const globalErrorHandler = (
 
   // Zod Validation Error
   if (err instanceof ZodError) {
-    const messages = err.errors.map((issue) => `${issue.path.join('.')}: ${issue.message}`);
+    const messages = err.issues.map((issue: ZodIssue) => `${issue.path.join('.')}: ${issue.message}`);
     return res.status(400).json({
       success: false,
       message: 'Validation Error',
