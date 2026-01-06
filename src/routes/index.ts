@@ -5,6 +5,7 @@ import moduleRoutes from './module.routes';
 import quizRoutes from './quiz.routes';
 import challengeRoutes from './challenge.routes';
 import leaderboardRoutes from './leaderboard.routes';
+import learningRoutes from './learning.routes';
 
 const router = Router();
 
@@ -23,5 +24,6 @@ router.use('/modules', moduleRoutes);
 router.use('/quizzes', quizRoutes);
 router.use('/challenges', challengeRoutes);
 router.use('/leaderboard', leaderboardRoutes);
+router.use('/learning', learningRoutes);
 
 export default router;
