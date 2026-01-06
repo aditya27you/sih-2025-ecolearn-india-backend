@@ -64,21 +64,24 @@ export const submitChallengeProof = catchAsync(
       throw new ApiError('Please upload proof image', 400);
     }
 
+    const { challengeId, challengeTitle, description, points } = req.body;
+
     const submission = await challengeService.submitChallengeProof(
       (req as any).user._id,
-      req.params.id,
-      req.file.path,
+      {
+        challengeId,
+        challengeTitle,
+        description,
+        points: Number(points),
+        imageUrl: req.file.path,
+      },
     );
 
-    res
-      .status(201)
-      .json(
-        new ApiResponse(
-          201,
-          submission,
-          'Challenge proof submitted successfully',
-        ),
-      );
+    res.status(201).json({
+      success: true,
+      message: 'Challenge proof submitted successfully',
+      data: submission,
+    });
   },
 );
 

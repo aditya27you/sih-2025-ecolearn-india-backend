@@ -142,38 +142,17 @@ router
   )
   .delete(protect, restrictTo('admin'), challengeController.deleteChallenge);
 
-/**
- * @swagger
- * /challenges/{id}/submit:
- *   post:
- *     summary: Submit proof for a challenge
- *     tags: [Challenges]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     requestBody:
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               challenge:
- *                 type: string
- *                 format: binary
- *     responses:
- *       201:
- *         description: Submission created successfully
- *       400:
- *         description: File upload error
- *       401:
- *         description: Unauthorized
- */
+router.route('/submit').post(
+  protect,
+  upload.single('file'), // Changed from 'challenge' to 'file' to match spec body field name
+  challengeController.submitChallengeProof,
+);
+
+router.route('/my-submissions').get(
+  protect,
+  challengeController.getUserSubmissions,
+);
+
 router.route('/:id/submit').post(
   protect,
   upload.single('challenge'), // 'challenge' is the field name

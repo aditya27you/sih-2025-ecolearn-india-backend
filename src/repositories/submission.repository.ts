@@ -11,14 +11,11 @@ export class SubmissionRepository {
   }
 
   async findByUser(userId: string): Promise<ISubmission[]> {
-    return Submission.find({ userId }).populate(
-      'challengeId',
-      'title ecoPoints',
-    );
+    return Submission.find({ userId });
   }
 
   async findById(id: string): Promise<ISubmission | null> {
-    return Submission.findById(id).populate('challengeId userId');
+    return Submission.findById(id).populate('userId');
   }
 
   async update(

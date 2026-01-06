@@ -41,22 +41,11 @@ export class ChallengeService {
   // Submission Methods
   async submitChallengeProof(
     userId: string,
-    challengeId: string,
-    proofImageUrl: string,
+    submissionData: Partial<ISubmission>,
   ) {
-    const challenge = await challengeRepository.findById(challengeId);
-    if (!challenge) {
-      throw new ApiError('Challenge not found', 404);
-    }
-
-    if (new Date() > challenge.deadline) {
-      throw new ApiError('Challenge deadline has passed', 400);
-    }
-
     return submissionRepository.create({
+      ...submissionData,
       userId: userId as any,
-      challengeId: challengeId as any,
-      proofImageUrl,
       status: 'pending',
     });
   }
@@ -81,13 +70,12 @@ export class ChallengeService {
 
     const updatedSubmission = await submissionRepository.update(submissionId, {
       status: 'approved',
-      feedback,
+      teacherComment: feedback,
     });
 
     // Award eco-points
-    const challenge = submission.challengeId as any;
     await userRepository.update(submission.userId.toString(), {
-      $inc: { ecoPoints: challenge.ecoPoints },
+      $inc: { ecoPoints: submission.points },
     } as any);
 
     return updatedSubmission;
