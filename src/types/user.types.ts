@@ -10,6 +10,7 @@ export interface IUser {
   grade?: number;
   ecoPoints: number;
   streak: number;
+  avatar?: string;
   isActive: boolean;
   createdAt?: Date;
   updatedAt?: Date;

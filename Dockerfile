@@ -37,7 +37,7 @@ COPY --from=builder /app/dist ./dist
 RUN mkdir -p src/uploads/challenges src/uploads/profiles
 
 # Expose the application port
-EXPOSE 2704
+EXPOSE 5000
 
 # Start the application
 CMD ["node", "dist/server.js"]

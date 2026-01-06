@@ -18,8 +18,8 @@ export interface IModule {
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   ecoPoints: number;
   lessons?: Types.ObjectId[]; // Array of Lesson references
-  quiz?: Types.ObjectId;      // Reference to Quiz
-  createdBy: Types.ObjectId;  // Admin ID
+  quiz?: Types.ObjectId; // Reference to Quiz
+  createdBy: Types.ObjectId; // Admin ID
   createdAt?: Date;
   updatedAt?: Date;
 }

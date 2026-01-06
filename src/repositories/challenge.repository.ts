@@ -14,8 +14,14 @@ export class ChallengeRepository {
     return Challenge.findById(id);
   }
 
-  async update(id: string, data: Partial<IChallenge>): Promise<IChallenge | null> {
-    return Challenge.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+  async update(
+    id: string,
+    data: Partial<IChallenge>,
+  ): Promise<IChallenge | null> {
+    return Challenge.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
   }
 
   async delete(id: string): Promise<IChallenge | null> {

@@ -3,8 +3,14 @@ import * as moduleController from '../controllers/module.controller';
 import * as lessonController from '../controllers/lesson.controller';
 import { protect, restrictTo } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/validate.middleware';
-import { createModuleSchema, updateModuleSchema } from '../validators/module.validator';
-import { createLessonSchema, updateLessonSchema } from '../validators/lesson.validator';
+import {
+  createModuleSchema,
+  updateModuleSchema,
+} from '../validators/module.validator';
+import {
+  createLessonSchema,
+  updateLessonSchema,
+} from '../validators/lesson.validator';
 
 const router = Router();
 
@@ -13,6 +19,11 @@ const router = Router();
  * tags:
  *   name: Modules
  *   description: Educational modules management
+ */
+
+/**
+ * @swagger
+ * tags:
  *   name: Lessons
  *   description: Lesson management within modules
  */
@@ -57,7 +68,7 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(createModuleSchema),
-    moduleController.createModule
+    moduleController.createModule,
   );
 
 /**
@@ -135,12 +146,12 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(updateModuleSchema),
-    moduleController.updateModule
+    moduleController.updateModule,
   )
   .delete(
     protect,
     restrictTo('admin', 'teacher'),
-    moduleController.deleteModule
+    moduleController.deleteModule,
   );
 
 // Nested Lesson Routes for a specific Module
@@ -199,7 +210,7 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(createLessonSchema),
-    lessonController.createLesson
+    lessonController.createLesson,
   );
 
 // Individual Lesson Routes
@@ -279,12 +290,12 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(updateLessonSchema),
-    lessonController.updateLesson
+    lessonController.updateLesson,
   )
   .delete(
     protect,
     restrictTo('admin', 'teacher'),
-    lessonController.deleteLesson
+    lessonController.deleteLesson,
   );
 
 export default router;

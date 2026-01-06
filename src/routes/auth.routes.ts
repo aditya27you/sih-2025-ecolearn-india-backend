@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import * as authController from '../controllers/auth.controller';
+import * as userController from '../controllers/user.controller';
+import { protect } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/validate.middleware';
 import { registerSchema, loginSchema } from '../validators/auth.validator';
 
@@ -50,5 +52,21 @@ router.post('/register', validate(registerSchema), authController.register);
  *         description: Login successful
  */
 router.post('/login', validate(loginSchema), authController.login);
+
+/**
+ * @swagger
+ * /auth/me:
+ *   get:
+ *     summary: Get current user profile
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User profile retrieved successfully
+ *       401:
+ *         description: Unauthorized
+ */
+router.get('/me', protect, userController.getMe);
 
 export default router;

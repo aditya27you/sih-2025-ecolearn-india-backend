@@ -1,22 +1,16 @@
-import mongoose from 'mongoose';
 import app from './app';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const PORT = process.env.PORT || 2704;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/ecolearn-india';
+import { env } from './config/env';
+import { connectDB } from './config/database';
 
 const startServer = async () => {
   try {
-    await mongoose.connect(MONGO_URI);
-    console.log('✅ Connected to MongoDB');
+    await connectDB();
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    app.listen(env.PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${env.PORT}`);
     });
   } catch (error) {
-    console.error('❌ Database connection failed:', error);
+    console.error('❌ Server startup failed:', error);
     process.exit(1);
   }
 };

@@ -9,12 +9,12 @@ export class LessonService {
     if (!data.moduleId) {
       throw new ApiError('Module ID is required', 400);
     }
-    
+
     const lesson = await lessonRepository.create(data);
-    
+
     // Add lesson to module's lessons array
     await Module.findByIdAndUpdate(data.moduleId, {
-      $push: { lessons: lesson._id }
+      $push: { lessons: lesson._id },
     });
 
     return lesson;
@@ -47,11 +47,11 @@ export class LessonService {
     }
 
     const deleted = await lessonRepository.delete(id);
-    
+
     // Remove lesson from module's lessons array
     if (lesson.moduleId) {
       await Module.findByIdAndUpdate(lesson.moduleId, {
-        $pull: { lessons: id }
+        $pull: { lessons: id },
       });
     }
 

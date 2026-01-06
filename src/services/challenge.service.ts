@@ -39,7 +39,11 @@ export class ChallengeService {
   }
 
   // Submission Methods
-  async submitChallengeProof(userId: string, challengeId: string, proofImageUrl: string) {
+  async submitChallengeProof(
+    userId: string,
+    challengeId: string,
+    proofImageUrl: string,
+  ) {
     const challenge = await challengeRepository.findById(challengeId);
     if (!challenge) {
       throw new ApiError('Challenge not found', 404);
@@ -81,9 +85,9 @@ export class ChallengeService {
     });
 
     // Award eco-points
-    const challenge = (submission.challengeId as any);
+    const challenge = submission.challengeId as any;
     await userRepository.update(submission.userId.toString(), {
-      $inc: { ecoPoints: challenge.ecoPoints }
+      $inc: { ecoPoints: challenge.ecoPoints },
     } as any);
 
     return updatedSubmission;

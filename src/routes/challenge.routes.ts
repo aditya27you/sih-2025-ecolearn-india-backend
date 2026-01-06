@@ -3,10 +3,10 @@ import * as challengeController from '../controllers/challenge.controller';
 import { protect, restrictTo } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/validate.middleware';
 import { upload } from '../middlewares/upload.middleware';
-import { 
-  createChallengeSchema, 
-  updateChallengeSchema, 
-  processSubmissionSchema 
+import {
+  createChallengeSchema,
+  updateChallengeSchema,
+  processSubmissionSchema,
 } from '../validators/challenge.validator';
 
 const router = Router();
@@ -60,7 +60,7 @@ router
     protect,
     restrictTo('admin'),
     validate(createChallengeSchema),
-    challengeController.createChallenge
+    challengeController.createChallenge,
   );
 
 /**
@@ -138,13 +138,9 @@ router
     protect,
     restrictTo('admin'),
     validate(updateChallengeSchema),
-    challengeController.updateChallenge
+    challengeController.updateChallenge,
   )
-  .delete(
-    protect,
-    restrictTo('admin'),
-    challengeController.deleteChallenge
-  );
+  .delete(protect, restrictTo('admin'), challengeController.deleteChallenge);
 
 /**
  * @swagger
@@ -178,13 +174,11 @@ router
  *       401:
  *         description: Unauthorized
  */
-router
-  .route('/:id/submit')
-  .post(
-    protect,
-    upload.single('challenge'), // 'challenge' is the field name
-    challengeController.submitChallengeProof
-  );
+router.route('/:id/submit').post(
+  protect,
+  upload.single('challenge'), // 'challenge' is the field name
+  challengeController.submitChallengeProof,
+);
 
 /**
  * @swagger
@@ -213,7 +207,7 @@ router
   .get(
     protect,
     restrictTo('admin'),
-    challengeController.getSubmissionsByChallenge
+    challengeController.getSubmissionsByChallenge,
   );
 
 /**
@@ -246,7 +240,7 @@ router
     protect,
     restrictTo('admin'),
     validate(processSubmissionSchema),
-    challengeController.approveSubmission
+    challengeController.approveSubmission,
   );
 
 /**
@@ -279,7 +273,7 @@ router
     protect,
     restrictTo('admin'),
     validate(processSubmissionSchema),
-    challengeController.rejectSubmission
+    challengeController.rejectSubmission,
   );
 
 export default router;

@@ -2,26 +2,36 @@
   "name": "sih-2025-ecolearn-india-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "node --watch --env-file=.env --import=tsx src/server.ts",
-    "build": "tsc"
+    "start": "node dist/server.js",
+    "build": "npm run clean && tsc",
+    "clean": "rimraf dist",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
     "helmet": "^8.1.0",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
     "multer": "^2.0.2",
+    "multer-storage-cloudinary": "^4.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "tsx": "^4.21.0",
     "zod": "^4.2.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -31,7 +41,14 @@
     "@types/node": "^25.0.3",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
-    "typescript": "^5.9.3"
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^17.0.0",
+    "prettier": "^3.7.4",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0"
   },
   "private": true
 }

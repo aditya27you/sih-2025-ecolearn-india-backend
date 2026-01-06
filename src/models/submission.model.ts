@@ -3,17 +3,24 @@ import { ISubmission } from '../types/challenge.types';
 
 const SubmissionSchema = new Schema<ISubmission>(
   {
-    challengeId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Challenge',
-      required: true,
-    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    proofImageUrl: {
+    challengeId: {
+      type: String,
+      required: true,
+    },
+    challengeTitle: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    imageUrl: {
       type: String,
       required: true,
     },
@@ -22,13 +29,20 @@ const SubmissionSchema = new Schema<ISubmission>(
       enum: ['pending', 'approved', 'rejected'],
       default: 'pending',
     },
-    feedback: {
+    points: {
+      type: Number,
+      required: true,
+    },
+    teacherComment: {
       type: String,
     },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const Submission = mongoose.model<ISubmission>('Submission', SubmissionSchema);
+export const Submission = mongoose.model<ISubmission>(
+  'Submission',
+  SubmissionSchema,
+);

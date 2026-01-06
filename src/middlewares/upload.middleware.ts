@@ -1,27 +1,29 @@
 import multer from 'multer';
-import path from 'path';
-import fs from 'fs';
+import { v2 as cloudinary } from 'cloudinary';
+import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { ApiError } from '../utils/apierror';
+import { env } from '../config/env';
 
-// Ensure upload directories exist
-const uploadDirs = ['src/uploads/challenges', 'src/uploads/profiles'];
-uploadDirs.forEach(dir => {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: env.CLOUDINARY_CLOUD_NAME,
+  api_key: env.CLOUDINARY_API_KEY,
+  api_secret: env.CLOUDINARY_API_SECRET,
 });
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (file.fieldname === 'challenge') {
-      cb(null, 'src/uploads/challenges');
-    } else {
-      cb(null, 'src/uploads/profiles');
-    }
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+// Setup Cloudinary Storage
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+    const folder =
+      file.fieldname === 'challenge'
+        ? 'ecolearn/challenges'
+        : 'ecolearn/profiles';
+    return {
+      folder: folder,
+      allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+      transformation: [{ width: 800, height: 800, crop: 'limit' }],
+    };
   },
 });
 

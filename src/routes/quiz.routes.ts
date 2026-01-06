@@ -2,7 +2,11 @@ import { Router } from 'express';
 import * as quizController from '../controllers/quiz.controller';
 import { protect, restrictTo } from '../middlewares/auth.middleware';
 import { validate } from '../middlewares/validate.middleware';
-import { createQuizSchema, submitQuizSchema, updateQuizSchema } from '../validators/quiz.validator';
+import {
+  createQuizSchema,
+  submitQuizSchema,
+  updateQuizSchema,
+} from '../validators/quiz.validator';
 
 const router = Router();
 
@@ -54,7 +58,7 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(createQuizSchema),
-    quizController.createQuiz
+    quizController.createQuiz,
   );
 
 /**
@@ -75,9 +79,7 @@ router
  *       404:
  *         description: Quiz not found
  */
-router
-  .route('/module/:moduleId')
-  .get(quizController.getQuizByModule);
+router.route('/module/:moduleId').get(quizController.getQuizByModule);
 
 /**
  * @swagger
@@ -156,13 +158,9 @@ router
     protect,
     restrictTo('admin', 'teacher'),
     validate(updateQuizSchema),
-    quizController.updateQuiz
+    quizController.updateQuiz,
   )
-  .delete(
-    protect,
-    restrictTo('admin', 'teacher'),
-    quizController.deleteQuiz
-  );
+  .delete(protect, restrictTo('admin', 'teacher'), quizController.deleteQuiz);
 
 /**
  * @swagger
@@ -204,10 +202,6 @@ router
  */
 router
   .route('/:id/submit')
-  .post(
-    protect,
-    validate(submitQuizSchema),
-    quizController.submitQuiz
-  );
+  .post(protect, validate(submitQuizSchema), quizController.submitQuiz);
 
 export default router;

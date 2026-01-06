@@ -8,10 +8,14 @@ export const createQuiz = catchAsync(async (req: Request, res: Response) => {
   res.status(201).json(new ApiResponse(201, quiz, 'Quiz created successfully'));
 });
 
-export const getQuizByModule = catchAsync(async (req: Request, res: Response) => {
-  const quiz = await quizService.getQuizByModule(req.params.moduleId);
-  res.status(200).json(new ApiResponse(200, quiz, 'Quiz fetched successfully'));
-});
+export const getQuizByModule = catchAsync(
+  async (req: Request, res: Response) => {
+    const quiz = await quizService.getQuizByModule(req.params.moduleId);
+    res
+      .status(200)
+      .json(new ApiResponse(200, quiz, 'Quiz fetched successfully'));
+  },
+);
 
 export const getQuizById = catchAsync(async (req: Request, res: Response) => {
   const quiz = await quizService.getQuizById(req.params.id);
@@ -23,9 +27,11 @@ export const submitQuiz = catchAsync(async (req: Request, res: Response) => {
   const submission = await quizService.submitQuiz(
     (req as any).user._id,
     req.params.id,
-    answers
+    answers,
   );
-  res.status(200).json(new ApiResponse(200, submission, 'Quiz submitted successfully'));
+  res
+    .status(200)
+    .json(new ApiResponse(200, submission, 'Quiz submitted successfully'));
 });
 
 export const updateQuiz = catchAsync(async (req: Request, res: Response) => {

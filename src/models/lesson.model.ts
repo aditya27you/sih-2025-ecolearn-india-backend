@@ -27,7 +27,7 @@ const LessonSchema = new Schema<ILesson>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 // Index for performance and ordering

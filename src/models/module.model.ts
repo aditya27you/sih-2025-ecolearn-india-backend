@@ -40,7 +40,7 @@ const ModuleSchema = new Schema<IModule>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const Module = mongoose.model<IModule>('Module', ModuleSchema);

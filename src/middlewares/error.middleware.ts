@@ -6,7 +6,7 @@ export const globalErrorHandler = (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   let error = err;
 
@@ -16,7 +16,9 @@ export const globalErrorHandler = (
 
   // Zod Validation Error
   if (err instanceof ZodError) {
-    const messages = err.issues.map((issue: ZodIssue) => `${issue.path.join('.')}: ${issue.message}`);
+    const messages = err.issues.map(
+      (issue: ZodIssue) => `${issue.path.join('.')}: ${issue.message}`,
+    );
     return res.status(400).json({
       success: false,
       message: 'Validation Error',
@@ -26,9 +28,7 @@ export const globalErrorHandler = (
 
   // Mongoose Validation Error
   if (err.name === 'ValidationError') {
-    const messages = Object.values(err.errors).map(
-      (val: any) => val.message
-    );
+    const messages = Object.values(err.errors).map((val: any) => val.message);
     error = new ApiError('Validation Error', 400);
     return res.status(400).json({
       success: false,

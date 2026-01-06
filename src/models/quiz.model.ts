@@ -9,7 +9,10 @@ const QuestionSchema = new Schema({
   options: {
     type: [String],
     required: true,
-    validate: [(val: string[]) => val.length >= 2, 'At least 2 options required'],
+    validate: [
+      (val: string[]) => val.length >= 2,
+      'At least 2 options required',
+    ],
   },
   correctOptionIndex: {
     type: Number,
@@ -38,7 +41,7 @@ const QuizSchema = new Schema<IQuiz>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const Quiz = mongoose.model<IQuiz>('Quiz', QuizSchema);

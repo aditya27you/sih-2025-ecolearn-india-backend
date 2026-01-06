@@ -5,7 +5,7 @@ export class ApiError extends Error {
   constructor(
     message: string,
     statusCode: number = 500,
-    isOperational: boolean = true
+    isOperational: boolean = true,
   ) {
     super(message);
     this.statusCode = statusCode;

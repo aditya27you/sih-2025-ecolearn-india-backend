@@ -28,7 +28,10 @@ const QuizSubmissionSchema = new Schema<IQuizSubmission>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const QuizSubmission = mongoose.model<IQuizSubmission>('QuizSubmission', QuizSubmissionSchema);
+export const QuizSubmission = mongoose.model<IQuizSubmission>(
+  'QuizSubmission',
+  QuizSubmissionSchema,
+);

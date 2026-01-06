@@ -36,7 +36,10 @@ const ChallengeSchema = new Schema<IChallenge>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export const Challenge = mongoose.model<IChallenge>('Challenge', ChallengeSchema);
+export const Challenge = mongoose.model<IChallenge>(
+  'Challenge',
+  ChallengeSchema,
+);

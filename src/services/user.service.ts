@@ -13,7 +13,7 @@ export class UserService {
 
   async updateProfile(userId: string, updateData: Partial<IUser>) {
     if (updateData.password) {
-        throw new ApiError('This route is not for password updates.', 400);
+      throw new ApiError('This route is not for password updates.', 400);
     }
 
     const updatedUser = await userRepository.update(userId, updateData);

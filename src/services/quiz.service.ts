@@ -11,10 +11,10 @@ export class QuizService {
       throw new ApiError('Module ID is required', 400);
     }
     const quiz = await quizRepository.create(data);
-    
+
     // Link quiz to module
     await moduleRepository.update(data.moduleId.toString(), {
-      quiz: quiz._id
+      quiz: quiz._id,
     } as any);
 
     return quiz;
@@ -67,7 +67,7 @@ export class QuizService {
 
       if (!previousPass) {
         await userRepository.update(userId, {
-          $inc: { ecoPoints: quiz.ecoPoints }
+          $inc: { ecoPoints: quiz.ecoPoints },
         } as any);
       }
     }
@@ -102,7 +102,7 @@ export class QuizService {
     // Remove quiz from module
     if (quiz.moduleId) {
       await moduleRepository.update(quiz.moduleId.toString(), {
-        $unset: { quiz: 1 }
+        $unset: { quiz: 1 },
       } as any);
     }
 

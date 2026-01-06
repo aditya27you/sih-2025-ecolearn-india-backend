@@ -15,11 +15,14 @@ export interface IChallenge {
 
 export interface ISubmission {
   _id?: Types.ObjectId;
-  challengeId: Types.ObjectId;
   userId: Types.ObjectId;
-  proofImageUrl: string;
+  challengeId: string;
+  challengeTitle: string;
+  description: string;
+  imageUrl: string;
   status: 'pending' | 'approved' | 'rejected';
-  feedback?: string;
+  points: number;
+  teacherComment?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

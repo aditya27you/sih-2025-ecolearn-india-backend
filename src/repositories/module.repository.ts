@@ -15,7 +15,10 @@ export class ModuleRepository {
   }
 
   async update(id: string, data: Partial<IModule>): Promise<IModule | null> {
-    return Module.findByIdAndUpdate(id, data, { new: true, runValidators: true });
+    return Module.findByIdAndUpdate(id, data, {
+      new: true,
+      runValidators: true,
+    });
   }
 
   async delete(id: string): Promise<IModule | null> {

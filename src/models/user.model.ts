@@ -45,6 +45,10 @@ const UserSchema = new Schema<IUser>(
       type: Number,
       default: 0,
     },
+    avatar: {
+      type: String,
+      default: 'default-avatar-url',
+    },
     isActive: {
       type: Boolean,
       default: true,
@@ -52,7 +56,7 @@ const UserSchema = new Schema<IUser>(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 UserSchema.index({ schoolId: 1, ecoPoints: -1 });
@@ -60,11 +64,13 @@ UserSchema.index({ schoolId: 1, ecoPoints: -1 });
 UserSchema.pre('save', async function () {
   const user = this as any;
   if (!user.isModified('password')) return;
-  
+
   user.password = await bcrypt.hash(user.password, 12);
 });
 
-UserSchema.methods.comparePassword = async function (candidatePassword: string) {
+UserSchema.methods.comparePassword = async function (
+  candidatePassword: string,
+) {
   return bcrypt.compare(candidatePassword, (this as any).password);
 };
 

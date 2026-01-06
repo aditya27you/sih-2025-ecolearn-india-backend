@@ -6,7 +6,7 @@ import { ApiError } from '../utils/apierror';
 export class AuthService {
   async register(userData: Partial<IUser>) {
     if (!userData.email || !userData.password || !userData.name) {
-       throw new ApiError('Missing required fields', 400);
+      throw new ApiError('Missing required fields', 400);
     }
 
     const existingUser = await userRepository.findByEmail(userData.email);
@@ -18,10 +18,12 @@ export class AuthService {
     if (!newUser) {
       throw new ApiError('User creation failed', 500);
     }
-    
+
     const token = signToken({ id: newUser._id, role: newUser.role });
 
-    const { password, ...userResponse } = (newUser as any).toObject ? (newUser as any).toObject() : { ...newUser };
+    const { password, ...userResponse } = (newUser as any).toObject
+      ? (newUser as any).toObject()
+      : { ...newUser };
 
     return { user: userResponse, token };
   }
@@ -38,8 +40,10 @@ export class AuthService {
     }
 
     const token = signToken({ id: user._id, role: user.role });
-    
-    const { password: _, ...userResponse } = (user as any).toObject ? (user as any).toObject() : { ...user };
+
+    const { password: _, ...userResponse } = (user as any).toObject
+      ? (user as any).toObject()
+      : { ...user };
 
     return { user: userResponse, token };
   }
