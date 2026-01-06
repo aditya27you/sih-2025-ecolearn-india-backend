@@ -81,6 +81,18 @@
 - [x] T045 Finalize `src/config/swagger.ts` configuration
 - [x] T046 Verify `src/app.ts` mounts Swagger UI at `/api-docs`
 
+## Phase 8: Specification Compliance & Infrastructure
+> **Goal**: Align the codebase with the final specification and setup core development tools.
+> **Test Criteria**: Schemas match spec, Auth returns correct structure, Linting/Tests pass.
+
+- [x] T047 Align User and Submission schemas with Specification
+- [x] T048 Implement Learning Progress Schema and Service (`/api/learning`)
+- [x] T049 Align Auth response structures (direct `token` and `user` keys)
+- [x] T050 Implement Leaderboard national/school filters and user rank
+- [x] T051 Setup Linting (ESLint) and Formatting (Prettier)
+- [x] T052 Setup Testing Infrastructure (Jest + Supertest)
+- [x] T053 Create Database Seeding script (`npm run seed`)
+
 ## Dependencies
 - US1 (Auth) blocks all other stories (User ID required for most operations).
 - US2 (Modules) is prerequisite for US3 (Quizzes) as quizzes are linked to modules.
