@@ -87,7 +87,6 @@ This project is **hackathon-ready, production-aligned**, and follows **industry-
 | File Upload | Multer            |
 | Security    | Helmet, CORS      |
 | Logging     | Morgan            |
-| API Docs    | Swagger (OpenAPI) |
 | Testing     | Jest, Supertest   |
 | API Testing | Postman           |
 
@@ -158,24 +157,18 @@ npm start
 ## 📡 API Base URL
 
 ```
-/api/v1
+/api
 ```
 
 ---
 
 ## 📦 API Response Format
 
-### ✅ Success Response
+### Success Response
 
-```json
-{
-  "success": true,
-  "message": "Operation successful",
-  "data": {}
-}
-```
+Success responses return the requested data directly (e.g., objects or arrays).
 
-### ❌ Error Response
+### Error Response
 
 ```json
 {
@@ -214,34 +207,35 @@ npm start
 
 ### 🧠 Quizzes
 
-| Method | Endpoint                    |
-| ------ | --------------------------- |
-| GET    | `/quizzes/:moduleId`        |
-| POST   | `/quizzes/:moduleId/submit` |
-| PUT    | `/quizzes/:id`              |
-| DELETE | `/quizzes/:id`              |
+| Method | Endpoint                    | Description |
+| ------ | --------------------------- | ----------- |
+| GET    | `/quizzes/:moduleId`        | Get quiz    |
+| POST   | `/quizzes/:moduleId/submit` | Submit quiz |
+| PUT    | `/quizzes/:id`              | Update quiz |
+| DELETE | `/quizzes/:id`              | Delete quiz |
 
 ---
 
 ### 🌱 Challenges
 
-| Method | Endpoint                   |
-| ------ | -------------------------- |
-| GET    | `/challenges`              |
-| GET    | `/challenges/:id`          |
-| POST   | `/challenges`              |
-| POST   | `/challenges/:id/submit`   |
-| PUT    | `/submissions/:id/approve` |
+| Method | Endpoint                   | Description        |
+| ------ | -------------------------- | ------------------ |
+| GET    | `/challenges`              | List challenges    |
+| GET    | `/challenges/:id`          | Challenge details  |
+| POST   | `/challenges`              | Create challenge   |
+| POST   | `/challenges/submit`       | Submit challenge   |
+| PUT    | `/submissions/:id/approve` | Approve submission |
 
 ---
 
 ### 🏆 Leaderboard
 
-| Method | Endpoint                    |
-| ------ | --------------------------- |
-| GET    | `/leaderboard/school/:id`   |
-| GET    | `/leaderboard/state/:state` |
-| GET    | `/leaderboard/national`     |
+| Method | Endpoint                    | Description          |
+| ------ | --------------------------- | -------------------- |
+| GET    | `/leaderboard`              | Global/Filtered      |
+| GET    | `/leaderboard/school/:id`   | School leaderboard   |
+| GET    | `/leaderboard/state/:state` | State leaderboard    |
+| GET    | `/leaderboard/national`     | National leaderboard |
 
 ---
 
@@ -286,22 +280,6 @@ src/
 ```bash
 npm test
 ```
-
----
-
-## 📄 API Documentation (Swagger)
-
-After starting the server:
-
-```
-http://localhost:5000/api-docs
-```
-
-Features:
-
-* Interactive API explorer
-* Request/response schemas
-* Auth testing support
 
 ---
 

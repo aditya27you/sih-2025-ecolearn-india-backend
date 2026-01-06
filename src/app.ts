@@ -3,8 +3,6 @@ import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import { rateLimit } from 'express-rate-limit';
-import swaggerUi from 'swagger-ui-express';
-import { specs } from './config/swagger';
 import { globalErrorHandler } from './middlewares/error.middleware';
 import routes from './routes';
 import { env } from './config/env';
@@ -42,14 +40,9 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 // Prevent HTTP Parameter Pollution
 app.use(hpp());
 
-// Swagger Documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
 // Routes
 app.get('/', (req, res) => {
-  res.send(
-    '<h1>EcoLearn India Backend API</h1><p>Visit <a href="/api-docs">/api-docs</a> for documentation.</p>',
-  );
+  res.send('<h1>EcoLearn India Backend API</h1>');
 });
 
 app.use('/api', routes);

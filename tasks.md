@@ -75,11 +75,11 @@
 
 ## Phase 7: Polish & Documentation
 > **Goal**: Ensure code quality and documentation.
-> **Test Criteria**: Swagger UI is accessible and shows all endpoints.
+> **Test Criteria**: Linting and tests pass.
 
-- [x] T044 Add Swagger annotations to `src/routes/*.ts` files
-- [x] T045 Finalize `src/config/swagger.ts` configuration
-- [x] T046 Verify `src/app.ts` mounts Swagger UI at `/api-docs`
+- [x] T044 Finalize project documentation in `README.md`
+- [x] T045 Setup and verify global error handler
+- [x] T046 Verify `src/app.ts` root endpoint functionality
 
 ## Phase 8: Specification Compliance & Infrastructure
 > **Goal**: Align the codebase with the final specification and setup core development tools.
