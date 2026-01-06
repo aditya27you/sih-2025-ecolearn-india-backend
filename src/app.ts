@@ -17,7 +17,7 @@ app.use(helmet());
 // CORS Configuration
 app.use(
   cors({
-    origin: env.NODE_ENV === 'production' ? env.CLIENT_URL : '*',
+    origin: env.CLIENT_URL,
     credentials: true,
   }),
 );
