@@ -84,7 +84,7 @@ export class ChallengeService {
   async rejectSubmission(submissionId: string, feedback: string) {
     const updatedSubmission = await submissionRepository.update(submissionId, {
       status: 'rejected',
-      feedback,
+      teacherComment: feedback,
     });
 
     if (!updatedSubmission) {

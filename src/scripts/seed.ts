@@ -73,8 +73,8 @@ const seedDatabase = async () => {
     await Challenge.create({
       title: 'Plant a Tree',
       description: 'Plant a tree in your neighborhood and upload a photo.',
-      difficulty: 'Easy',
-      points: 100,
+      ecoPoints: 100,
+      deadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
       createdBy: admin._id,
     });
 
