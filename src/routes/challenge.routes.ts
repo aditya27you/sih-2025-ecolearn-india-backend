@@ -144,20 +144,13 @@ router
 
 router.route('/submit').post(
   protect,
-  upload.single('file'), // Changed from 'challenge' to 'file' to match spec body field name
+  upload.single('file'),
   challengeController.submitChallengeProof,
 );
 
-router.route('/my-submissions').get(
-  protect,
-  challengeController.getUserSubmissions,
-);
-
-router.route('/:id/submit').post(
-  protect,
-  upload.single('challenge'), // 'challenge' is the field name
-  challengeController.submitChallengeProof,
-);
+router
+  .route('/my-submissions')
+  .get(protect, challengeController.getUserSubmissions);
 
 /**
  * @swagger

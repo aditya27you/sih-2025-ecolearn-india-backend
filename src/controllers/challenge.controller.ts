@@ -10,29 +10,21 @@ export const createChallenge = catchAsync(
       ...req.body,
       createdBy: (req as any).user._id,
     });
-    res
-      .status(201)
-      .json(new ApiResponse(201, challenge, 'Challenge created successfully'));
+    res.status(201).json(challenge);
   },
 );
 
 export const getAllActiveChallenges = catchAsync(
   async (req: Request, res: Response) => {
     const challenges = await challengeService.getAllActiveChallenges();
-    res
-      .status(200)
-      .json(
-        new ApiResponse(200, challenges, 'Challenges fetched successfully'),
-      );
+    res.status(200).json(challenges);
   },
 );
 
 export const getChallengeById = catchAsync(
   async (req: Request, res: Response) => {
     const challenge = await challengeService.getChallengeById(req.params.id);
-    res
-      .status(200)
-      .json(new ApiResponse(200, challenge, 'Challenge fetched successfully'));
+    res.status(200).json(challenge);
   },
 );
 
@@ -42,18 +34,14 @@ export const updateChallenge = catchAsync(
       req.params.id,
       req.body,
     );
-    res
-      .status(200)
-      .json(new ApiResponse(200, challenge, 'Challenge updated successfully'));
+    res.status(200).json(challenge);
   },
 );
 
 export const deleteChallenge = catchAsync(
   async (req: Request, res: Response) => {
     await challengeService.deleteChallenge(req.params.id);
-    res
-      .status(200)
-      .json(new ApiResponse(200, null, 'Challenge deleted successfully'));
+    res.status(204).send();
   },
 );
 
@@ -77,11 +65,7 @@ export const submitChallengeProof = catchAsync(
       },
     );
 
-    res.status(201).json({
-      success: true,
-      message: 'Challenge proof submitted successfully',
-      data: submission,
-    });
+    res.status(201).json(submission);
   },
 );
 
@@ -90,15 +74,7 @@ export const getUserSubmissions = catchAsync(
     const submissions = await challengeService.getUserSubmissions(
       (req as any).user._id,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          submissions,
-          'User submissions fetched successfully',
-        ),
-      );
+    res.status(200).json(submissions);
   },
 );
 
@@ -107,11 +83,7 @@ export const getSubmissionsByChallenge = catchAsync(
     const submissions = await challengeService.getSubmissionsByChallenge(
       req.params.id,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(200, submissions, 'Submissions fetched successfully'),
-      );
+    res.status(200).json(submissions);
   },
 );
 
@@ -122,11 +94,7 @@ export const approveSubmission = catchAsync(
       req.params.id,
       feedback,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(200, submission, 'Submission approved successfully'),
-      );
+    res.status(200).json(submission);
   },
 );
 
@@ -140,10 +108,6 @@ export const rejectSubmission = catchAsync(
       req.params.id,
       feedback,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(200, submission, 'Submission rejected successfully'),
-      );
+    res.status(200).json(submission);
   },
 );

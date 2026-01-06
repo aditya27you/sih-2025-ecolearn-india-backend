@@ -11,11 +11,7 @@ export const markLessonComplete = catchAsync(
       lessonId,
     );
 
-    res.status(200).json({
-      success: true,
-      message: 'Lesson marked as complete',
-      data: progress,
-    });
+    res.status(200).json(progress);
   },
 );
 
@@ -28,10 +24,6 @@ export const submitQuizResult = catchAsync(
       score,
     );
 
-    res.status(200).json({
-      success: true,
-      message: 'Quiz result submitted successfully',
-      data: progress,
-    });
+    res.status(200).json(progress);
   },
 );

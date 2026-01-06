@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   );
 });
 
-app.use('/api/v1', routes);
+app.use('/api', routes);
 
 // Global Error Handler
 app.use(globalErrorHandler);

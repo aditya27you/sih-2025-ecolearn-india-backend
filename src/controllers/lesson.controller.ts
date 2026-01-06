@@ -5,37 +5,27 @@ import { ApiResponse } from '../utils/apiresponse';
 
 export const createLesson = catchAsync(async (req: Request, res: Response) => {
   const lesson = await lessonService.createLesson(req.body);
-  res
-    .status(201)
-    .json(new ApiResponse(201, lesson, 'Lesson created successfully'));
+  res.status(201).json(lesson);
 });
 
 export const getLessonsByModule = catchAsync(
   async (req: Request, res: Response) => {
     const lessons = await lessonService.getLessonsByModule(req.params.moduleId);
-    res
-      .status(200)
-      .json(new ApiResponse(200, lessons, 'Lessons fetched successfully'));
+    res.status(200).json(lessons);
   },
 );
 
 export const getLessonById = catchAsync(async (req: Request, res: Response) => {
   const lesson = await lessonService.getLessonById(req.params.id);
-  res
-    .status(200)
-    .json(new ApiResponse(200, lesson, 'Lesson fetched successfully'));
+  res.status(200).json(lesson);
 });
 
 export const updateLesson = catchAsync(async (req: Request, res: Response) => {
   const lesson = await lessonService.updateLesson(req.params.id, req.body);
-  res
-    .status(200)
-    .json(new ApiResponse(200, lesson, 'Lesson updated successfully'));
+  res.status(200).json(lesson);
 });
 
 export const deleteLesson = catchAsync(async (req: Request, res: Response) => {
   await lessonService.deleteLesson(req.params.id);
-  res
-    .status(200)
-    .json(new ApiResponse(200, null, 'Lesson deleted successfully'));
+  res.status(204).send();
 });

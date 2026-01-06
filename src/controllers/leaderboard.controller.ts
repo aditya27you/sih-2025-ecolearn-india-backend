@@ -7,15 +7,7 @@ export const getGlobalLeaderboard = catchAsync(
   async (req: Request, res: Response) => {
     const limit = req.query.limit ? parseInt(req.query.limit as string) : 10;
     const leaderboard = await leaderboardService.getGlobalLeaderboard(limit);
-    res
-      .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          leaderboard,
-          'Global leaderboard fetched successfully',
-        ),
-      );
+    res.status(200).json(leaderboard);
   },
 );
 
@@ -27,15 +19,7 @@ export const getSchoolLeaderboard = catchAsync(
       schoolId,
       limit,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          leaderboard,
-          'School leaderboard fetched successfully',
-        ),
-      );
+    res.status(200).json(leaderboard);
   },
 );
 
@@ -47,23 +31,13 @@ export const getGradeLeaderboard = catchAsync(
       grade,
       limit,
     );
-    res
-      .status(200)
-      .json(
-        new ApiResponse(
-          200,
-          leaderboard,
-          'Grade leaderboard fetched successfully',
-        ),
-      );
+    res.status(200).json(leaderboard);
   },
 );
 
 export const getMyRank = catchAsync(async (req: Request, res: Response) => {
   const rank = await leaderboardService.getUserRank((req as any).user._id);
-  res
-    .status(200)
-    .json(new ApiResponse(200, { rank }, 'Your rank fetched successfully'));
+  res.status(200).json({ rank });
 });
 
 export const getLeaderboard = catchAsync(
@@ -78,10 +52,6 @@ export const getLeaderboard = catchAsync(
       50,
     );
 
-    res.status(200).json({
-      success: true,
-      message: 'Leaderboard fetched successfully',
-      data: result,
-    });
+    res.status(200).json(result);
   },
 );

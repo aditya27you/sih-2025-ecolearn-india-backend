@@ -8,35 +8,25 @@ export const createModule = catchAsync(async (req: Request, res: Response) => {
     ...req.body,
     createdBy: (req as any).user._id,
   });
-  res
-    .status(201)
-    .json(new ApiResponse(201, module, 'Module created successfully'));
+  res.status(201).json(module);
 });
 
 export const getAllModules = catchAsync(async (req: Request, res: Response) => {
   const modules = await moduleService.getAllModules();
-  res
-    .status(200)
-    .json(new ApiResponse(200, modules, 'Modules fetched successfully'));
+  res.status(200).json(modules);
 });
 
 export const getModuleById = catchAsync(async (req: Request, res: Response) => {
   const module = await moduleService.getModuleById(req.params.id);
-  res
-    .status(200)
-    .json(new ApiResponse(200, module, 'Module fetched successfully'));
+  res.status(200).json(module);
 });
 
 export const updateModule = catchAsync(async (req: Request, res: Response) => {
   const module = await moduleService.updateModule(req.params.id, req.body);
-  res
-    .status(200)
-    .json(new ApiResponse(200, module, 'Module updated successfully'));
+  res.status(200).json(module);
 });
 
 export const deleteModule = catchAsync(async (req: Request, res: Response) => {
   await moduleService.deleteModule(req.params.id);
-  res
-    .status(200)
-    .json(new ApiResponse(200, null, 'Module deleted successfully'));
+  res.status(204).send();
 });
