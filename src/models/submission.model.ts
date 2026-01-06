@@ -33,6 +33,10 @@ const SubmissionSchema = new Schema<ISubmission>(
       type: Number,
       required: true,
     },
+    submittedAt: {
+      type: Date,
+      default: Date.now,
+    },
     teacherComment: {
       type: String,
     },

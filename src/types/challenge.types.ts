@@ -22,6 +22,7 @@ export interface ISubmission {
   imageUrl: string;
   status: 'pending' | 'approved' | 'rejected';
   points: number;
+  submittedAt: Date;
   teacherComment?: string;
   createdAt?: Date;
   updatedAt?: Date;
