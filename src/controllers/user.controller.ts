@@ -5,8 +5,7 @@ import { catchAsync } from '../utils/catchasync';
 export const getMe = catchAsync(async (req: Request, res: Response) => {
   const user = await userService.getProfile(req.user.id);
   res.status(200).json({
-    success: true,
-    data: user,
+    user,
   });
 });
 
