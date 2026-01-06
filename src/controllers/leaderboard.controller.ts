@@ -65,3 +65,23 @@ export const getMyRank = catchAsync(async (req: Request, res: Response) => {
     .status(200)
     .json(new ApiResponse(200, { rank }, 'Your rank fetched successfully'));
 });
+
+export const getLeaderboard = catchAsync(
+  async (req: Request, res: Response) => {
+    const { filter, schoolId } = req.query;
+    const userId = (req as any).user._id;
+
+    const result = await leaderboardService.getLeaderboard(
+      userId,
+      filter as string,
+      schoolId as string,
+      50,
+    );
+
+    res.status(200).json({
+      success: true,
+      message: 'Leaderboard fetched successfully',
+      data: result,
+    });
+  },
+);

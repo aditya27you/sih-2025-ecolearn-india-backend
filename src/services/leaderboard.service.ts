@@ -22,16 +22,45 @@ export class LeaderboardService {
       .select('name ecoPoints schoolId');
   }
 
-  async getUserRank(userId: string) {
+  async getUserRank(userId: string, filter?: string, schoolId?: string) {
     const user = await User.findById(userId);
     if (!user) return null;
 
+    const query: any = { role: 'student' };
+    if (filter === 'school' && schoolId) {
+      query.schoolId = schoolId;
+    }
+
     const rank = await User.countDocuments({
-      role: 'student',
+      ...query,
       ecoPoints: { $gt: user.ecoPoints },
     });
 
     return rank + 1;
+  }
+
+  async getLeaderboard(
+    userId: string,
+    filter: string = 'national',
+    schoolId?: string,
+    limit: number = 50,
+  ) {
+    const query: any = { role: 'student' };
+    if (filter === 'school' && schoolId) {
+      query.schoolId = schoolId;
+    }
+
+    const topUsers = await User.find(query)
+      .sort({ ecoPoints: -1 })
+      .limit(limit)
+      .select('name ecoPoints schoolId grade avatar');
+
+    const userRank = await this.getUserRank(userId, filter, schoolId);
+
+    return {
+      topUsers,
+      userRank,
+    };
   }
 }
 

@@ -75,4 +75,6 @@ router.get('/grade/:grade', leaderboardController.getGradeLeaderboard);
  */
 router.get('/me', protect, leaderboardController.getMyRank);
 
+router.get('/', protect, leaderboardController.getLeaderboard);
+
 export default router;
