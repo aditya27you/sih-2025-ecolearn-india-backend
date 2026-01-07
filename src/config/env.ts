@@ -15,6 +15,7 @@ const envSchema = z.object({
       'MONGO_URI must be a valid MongoDB connection string',
     ),
   JWT_SECRET: z.string().min(8, 'JWT_SECRET must be at least 8 characters'),
+  JWT_EXPIRES_IN: z.string().default('7d'),
 
   // Cloudinary credentials (optional for now, but required for cloud storage)
   CLOUDINARY_CLOUD_NAME: z.string().optional(),
