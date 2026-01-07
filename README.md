@@ -9,6 +9,7 @@
 [![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?logo=mongodb)](https://www.mongodb.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/import?repo=https://github.com/aditya27you/sih-2025-ecolearn-india-backend)
 
 ---
 
@@ -285,9 +286,24 @@ npm test
 
 ## 🐳 Deployment (Recommended)
 
-* **Backend:** Render / Railway
-* **Frontend:** Vercel
-* **Database:** MongoDB Atlas
+### 🚂 One-Click Deploy
+Click the button below to automatically clone this repo, set up a MongoDB instance, and deploy the API to Railway:
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/import?repo=https://github.com/aditya27you/sih-2025-ecolearn-india-backend)
+
+### 🐋 Docker & Docker Compose
+The easiest way to run the entire stack (API + MongoDB) locally:
+
+1. **Start the stack**:
+   ```bash
+   docker-compose up -d --build
+   ```
+2. **Seed the database**:
+   ```bash
+   docker exec ecolearn-backend npm run seed
+   ```
+
+The API will be available at `http://localhost:5000`.
 
 ---
 
