@@ -12,9 +12,11 @@ Use these accounts to test different roles and permissions. All passwords are `p
 | **Student** | `student@ecolearn.com` | `password123` | Take quizzes, submit challenges |
 
 ## 🔗 Important URLs
-- **API Base URL**: `http://localhost:5000/api`
-- **Interactive API Docs**: `http://localhost:5000/api-docs`
-- **Health Check**: `http://localhost:5000/api/health`
+- **Production API URL**: `https://sih-2025-ecolearn-india-backend-production.up.railway.app/api`
+- **Production API Docs**: `https://sih-2025-ecolearn-india-backend-production.up.railway.app/api-docs`
+- **Local API Base URL**: `http://localhost:5000/api`
+- **Local API Docs**: `http://localhost:5000/api-docs`
+- **Health Check**: `https://sih-2025-ecolearn-india-backend-production.up.railway.app/api/health`
 
 ## 🛠 Useful Commands
 - **Seed Database**: `npm run seed` (Wipes everything and creates the accounts above)
