@@ -24,6 +24,10 @@ const envSchema = z.object({
 
   // Frontend URL for CORS
   CLIENT_URL: z.string().url().default('http://localhost:5173'),
+
+  // Email configuration
+  EMAIL_USER: z.string().optional(),
+  EMAIL_PASS: z.string().optional(),
 });
 
 const _env = envSchema.safeParse(process.env);

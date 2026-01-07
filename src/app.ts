@@ -2,6 +2,8 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './config/swagger';
 import { rateLimit } from 'express-rate-limit';
 import { globalErrorHandler } from './middlewares/error.middleware';
 import routes from './routes';
@@ -41,6 +43,8 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(hpp());
 
 // Routes
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.get('/', (req, res) => {
   res.send('<h1>EcoLearn India Backend API</h1>');
 });

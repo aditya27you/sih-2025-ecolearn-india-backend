@@ -5,6 +5,16 @@ import { ApiError } from '../utils/apierror';
 import { env } from '../config/env';
 
 // Configure Cloudinary
+if (
+  !env.CLOUDINARY_CLOUD_NAME ||
+  !env.CLOUDINARY_API_KEY ||
+  !env.CLOUDINARY_API_SECRET
+) {
+  console.warn(
+    '⚠️ Cloudinary credentials missing. File uploads will fail. Please check your .env file.',
+  );
+}
+
 cloudinary.config({
   cloud_name: env.CLOUDINARY_CLOUD_NAME,
   api_key: env.CLOUDINARY_API_KEY,

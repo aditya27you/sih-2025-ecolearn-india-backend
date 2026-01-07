@@ -16,13 +16,16 @@ export const globalErrorHandler = (
 
   // Zod Validation Error
   if (err instanceof ZodError) {
-    const messages = err.issues.map(
-      (issue: ZodIssue) => `${issue.path.join('.')}: ${issue.message}`,
-    );
+    const errors: Record<string, string> = {};
+    err.issues.forEach((issue) => {
+      const path = issue.path.join('.');
+      errors[path] = issue.message;
+    });
+
     return res.status(400).json({
       success: false,
       message: 'Validation Error',
-      errors: messages,
+      errors,
     });
   }
 

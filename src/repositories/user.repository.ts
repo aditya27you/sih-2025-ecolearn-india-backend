@@ -18,6 +18,13 @@ export class UserRepository {
     return User.findOne({ email }).select('+password');
   }
 
+  async findByResetToken(token: string): Promise<IUser | null> {
+    return User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() },
+    });
+  }
+
   async update(id: string, updateData: Partial<IUser>): Promise<IUser | null> {
     return User.findByIdAndUpdate(id, updateData, {
       new: true,

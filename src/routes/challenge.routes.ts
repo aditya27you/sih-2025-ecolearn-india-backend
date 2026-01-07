@@ -32,11 +32,13 @@ router
   )
   .delete(protect, restrictTo('admin'), challengeController.deleteChallenge);
 
-router.route('/submit').post(
-  protect,
-  upload.single('file'),
-  challengeController.submitChallengeProof,
-);
+router
+  .route('/submit')
+  .post(
+    protect,
+    upload.single('file'),
+    challengeController.submitChallengeProof,
+  );
 
 router
   .route('/my-submissions')

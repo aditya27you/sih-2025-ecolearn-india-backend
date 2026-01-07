@@ -18,3 +18,16 @@ export const login = catchAsync(async (req: Request, res: Response) => {
     user,
   });
 });
+
+export const forgotPassword = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await authService.forgotPassword(req.body.email);
+    res.status(200).json(result);
+  },
+);
+
+export const resetPassword = catchAsync(async (req: Request, res: Response) => {
+  const { token, password } = req.body;
+  const result = await authService.resetPassword(token, password);
+  res.status(200).json(result);
+});
